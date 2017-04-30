@@ -1,0 +1,12 @@
+This is a simple polling site built in PHP 5.5 with Phalcon.
+
+To run it, Phalcon will need to be installed on your server: https://docs.phalconphp.com/en/latest/reference/install.html
+
+Questions.sql contains the required mysql database populated with a few users, some questions, and answers.
+The demo users and passwords are:
+username | password | details
+-----------------------------
+quizzer  | password | asked all the questions
+knower   | password | answered all the questions
+demo     | demo     | answered some questions
+
