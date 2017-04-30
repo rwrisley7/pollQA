@@ -1,0 +1,29 @@
+<?php echo \Phalcon\Tag::stylesheetLink("css/question/index.css"); ?>
+
+<h2>Ask a Question!</h2>
+
+<form action="/questions/question/ask" method="post">
+    <div class="formRow">
+        <label for="text">Question</label>
+        <textarea name="text"></textarea>
+    </div>
+
+    <div class="formRow">
+        <label for="answers[]" class="answersLabel">Answers</label>
+        <div class="answersWrapper">    
+            <div id="answersContainer">
+                <input type="text" name="answers[]" value="" />
+            </div>
+            <input type="button" class="addButton" onclick="addAnswer()" value="Add Answer" />
+        </div>
+
+        <div class="formRow">
+            <label for="allow_other" class="cbLabel">Allow custom answers</label>
+            <input type="checkbox" name="allow_other" value="1" />
+        </div>
+    </div>
+
+    <div class="formRow">
+        <button type="submit">Submit</button>
+    </div>
+</form>

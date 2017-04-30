@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>PollQA</title>
+        <?php echo \Phalcon\Tag::javascriptInclude("js/questions.js"); ?>
+        <?php echo \Phalcon\Tag::stylesheetLink("css/menu.css"); ?>
+    </head>
+    <body>
+        <div class="titleBar">
+            <div class="menuButton" onclick="toggleMenu()">
+                <div class="menuButtonLine"></div>
+                <div class="menuButtonLine"></div>
+                <div class="menuButtonLine"></div>
+            </div>
+            <?php if ($this->session->get("user")): ?>
+                <div class="userHeader">
+                    Hello, <?php echo $this->session->get("user")['name'] ?>
+                    <a href="/questions/profile/logout">Logout</a>
+                </div>
+            <?php endif; ?>
+        </div>
+
+        <div id="navMenu" class="hideMenu">            
+            <div class="menuItem">
+                <a href="/questions/question">Ask a Question</a>
+            </div>
+            <div class="menuItem">
+                <a href="/questions/answer">Answer a Question</a>
+            </div>
+            <?php if ($this->session->get("user")): ?>
+                <div class="menuItem">
+                    <a onclick="toggleMenuSubItems('profile')">Profile</a>
+                </div>
+                <div class="menuSubItem profileSubItem hiddenSubItem">
+                    <a href="/questions/profile/questions">Questions</a>
+                </div>
+                <div class="menuSubItem profileSubItem hiddenSubItem">
+                    <a href="/questions/profile/answers">Answers</a>
+                </div>
+            <?php else: ?> 
+                <div class="menuItem">
+                    <a href="/questions/profile">Log In</a>
+                </div>
+                <div class="menuItem">
+                    <a href="/questions/register">Sign Up</a>
+                </div>
+            <?php endif; ?>
+        </div>
+
+        <div id="mainBody">
+            <p><?php $this->flashSession->output() ?></p>
+
+            <?php echo $this->getContent(); ?>
+        </div>
+    </body>
+</html>

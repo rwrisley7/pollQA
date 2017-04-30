@@ -1,0 +1,19 @@
+<?php echo \Phalcon\Tag::stylesheetLink("css/profile/login.css"); ?>
+
+<h1>Login to View Your Profile!</h1>
+
+<form action="/questions/profile/auth" method="post">
+    <div class="formRow">
+        <label for="username">Username</label>
+        <input type="text" name="username" value="" />
+    </div>
+
+    <div class="formRow">
+        <label for="password">Password</label>
+        <input type="password" name="password" value="" />
+    </div>
+
+    <div class="formRow">
+        <button type="submit">Submit</button>
+    </div>
+</form>

@@ -1,0 +1,58 @@
+<?php echo \Phalcon\Tag::stylesheetLink("css/profile/questions.css"); ?>
+
+<?php if (empty($questions)): ?>
+    <h2>You have not asked any questions!</h2>
+
+    <h3><a href="/questions/question" class="askLink">Go ask some</a></h3>
+<?php else: ?>
+    <h2>Your Questions!</h2>
+
+    <table cellspacing="0" cellpadding="0" class="questionsTable">
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Allow Custom Answers?</th>
+                <th>Number of Answers<br/>(Click to show)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($questions as $question): ?>
+                <tr>
+                    <td><?= $question->text ?></td>
+                    <td><?php if ($question->allow_other) { echo "Yes"; } else { echo "No"; } ?></td>
+                    <td>
+                        <?php if ($question->has_answers): ?>
+                            <a id="answersToggle_<?= $question->id ?>" onclick="toggleAnswers(<?= $question->id ?>)"><?php echo $question->answers->count() ?></a>
+                        <?php else: ?>
+                            &nbsp;
+                        <?php endif; ?>
+                    </td>
+                </tr>
+                <?php if (!empty($question->answers)): ?>
+                    <tr id="answers_<?= $question->id ?>" class="hideRow">
+                        <td colspan="3" class="answersCell">
+                            <table cellspacing="0" cellpadding="0" class="answersTable">
+                                <thead>
+                                    <tr>
+                                        <th>Answer</th>
+                                        <th class="isCustomCol">Is Custom?</th>
+                                        <th class="timesCol">Times Chosen</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($question->answers as $answer): ?>
+                                        <tr>
+                                            <td><?= $answer->text ?></td>
+                                            <td class="isCustomCol"><?php if ($answer->is_other) { echo "Yes"; } else { echo "No"; } ?></td>
+                                            <td class="timesCol"><?php if (is_null($answer->times_used)) { echo "0"; } else { echo $answer->times_used; } ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php endif; ?>

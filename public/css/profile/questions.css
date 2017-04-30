@@ -1,0 +1,47 @@
+.askLink {    
+    text-decoration: none;
+    color: #999999;
+}
+
+.questionsTable {
+    width: 100%;
+}
+
+.questionsTable td, .questionsTable th {
+    border: 1px solid #888888;
+    padding: 5px;
+    min-width: 100px;
+}
+
+.answersTable {
+    width: 90%;
+    float: right;
+}
+
+.answersTable td, .answersTable th {
+    border: 1px solid #BBBBBB;
+    padding: 5px;
+    min-width: 75px;
+    color: #666666;
+}
+
+.hideRow {
+    display: none;
+}
+
+td.answersCell {
+    padding: 0;
+}
+
+.isCustomCol {
+    width: 110px;
+}
+
+.timesCol {
+    width: 125px;
+}
+
+a:hover {
+    cursor: pointer;
+    color: #666666;
+}

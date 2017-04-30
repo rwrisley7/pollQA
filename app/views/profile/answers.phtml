@@ -1,0 +1,28 @@
+<?php echo \Phalcon\Tag::stylesheetLink("css/profile/answers.css"); ?>
+
+<?php if ($answers->count() == 0): ?>
+    <h2>You have not answered any questions!</h2>
+
+    <h3><a href="/questions/answer" class="answerLink">Go answer some</a></h3>
+<?php else: ?>
+    <h1>Your Answers!</h1>
+
+    <table cellspacing="0" cellpadding="0">
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Answer</th>
+                <th>Is Custom?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($answers as $answer): ?>
+                <tr>
+                    <td><?= $answer->question_text ?></td>
+                    <td><?= $answer->text ?></td>
+                    <td><?php if($answer->is_other) { echo "Yes"; } else { echo "No"; } ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php endif; ?>

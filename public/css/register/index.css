@@ -1,0 +1,10 @@
+.formRow {
+    margin-top: 15px;
+}
+
+label {
+    width: 155px;
+    text-align: right;
+    display: inline-block;
+    margin-right: 5px;
+}

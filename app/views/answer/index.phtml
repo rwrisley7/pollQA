@@ -1,0 +1,30 @@
+<?php echo \Phalcon\Tag::stylesheetLink("css/answer/index.css"); ?>
+
+<?php if (!empty($question->text)): ?>
+    <h2><?= $question->text ?></h2>
+
+    <form action="/questions/answer/answer" method="post">
+        <input type="hidden" name="question_id" value="<?= $question->id ?>" />
+        <div class="formRow">
+            <?php foreach ($question->answers as $answer): ?>
+                <div class="answerRow">
+                    <input type="radio" name="answer" id="answer_<?= $answer->id ?>" value="<?= $answer->id ?>" /> 
+                    <label for="answer_<?= $answer->id ?>"><?= $answer->text ?></label>
+                </div>
+            <?php endforeach; ?>
+                
+            <?php if ($question->allow_other): ?>
+                <div>
+                    <input type="radio" name="answer" id="otherRadio" value="0" onclick="document.getElementById('otherText').focus()" />
+                    <input type="text" name="other" id="otherText" value="" placeholder="Other" onfocus="document.getElementById('otherRadio').checked = true" />
+                </div>
+            <?php endif; ?>
+        </div>
+
+        <div class="formRow">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+<?php else: ?>
+    <h2>You've answered all available questions, come back later!</h2>    
+<?php endif; ?>
