@@ -10,3 +10,4 @@ quizzer  | password | asked all the questions
 knower   | password | answered all the questions
 demo     | demo     | answered some questions
 
+app/config/config.ini will need to be updated with your database settings
