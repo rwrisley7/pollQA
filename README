@@ -1,4 +1,4 @@
-This is a simple polling site built in PHP 5.5 with Phalcon.
+PollQA (pronounced "polka") is a simple polling site built in PHP 5.5 with Phalcon.
 
 To run it, Phalcon will need to be installed on your server: https://docs.phalconphp.com/en/latest/reference/install.html
 
